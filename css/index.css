@@ -22,6 +22,7 @@ body{
     display:block;
     margin:25px;
     width: 300px;
+    margin-top: -81px;
 }
 .form_group{
     width:605px;
@@ -37,6 +38,7 @@ body{
    outline:none;
    text-indent:10px;
    border-radius: 10px  0 0 10px;
+   margin-left: 10px;
 }
 
 .input_sub{
@@ -63,7 +65,7 @@ body{
 }
 
 .hotkey{
-    margin:3px 0 0 2px;
+    margin:3px 0 0 10px;
 }
 
 .hotkey a{
