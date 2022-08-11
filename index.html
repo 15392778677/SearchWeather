@@ -1,77 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>RecordBook</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="googlebot" content="noindex, nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
-  <!-- 主体区域 -->
-  <section id="todoapp">
-    <!-- 输入框 -->
-    <header class="header">
-      <div class="img"> <a href="https://github.com/15392778677/Recordbook"><img src="./img/00.png" alt=""  width="100px"></a></div>
-      <h1>小翰记事本</h1>
-      <input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" autocomplete="off" placeholder="请输入任务"
-        class="new-todo" />
-    </header>
-    <!-- 列表区域 -->
-    <section class="main">
-      <ul class="todo-list">
-        <li class="todo" v-for="(item,index) in list">
-          <div class="view">
-            <span class="index">{{ index+1 }}.</span>
-            <label>{{ item }}</label>
-            <button class="destroy" @click="remove(index)"></button>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <!-- 统计和清空 -->
-    <footer class="footer" v-show="list.length!=0">
-      <span class="todo-count" v-if="list.length!=0">
-        <strong>{{ list.length }}</strong> items left
-      </span>
-      <button v-show="list.length!=0" class="clear-completed" @click="clear">
-        Clear
-      </button>
-    </footer>
-  </section>
-  <!-- 底部 -->
-  <footer class="info">
-    <p>
-      
-    </p>
-  </footer>
+  <div class="wrap" id="app">
+    <div class="search_form">
+      <div class="logo"><img src="./img/小翰查天气灰png.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" v-model="city"  @keyup.enter="searchWeather"   class="input_txt" placeholder="请输入查询的天气"/>
+        <button class="input_sub" @click="searchWeather">
+          <img src="./img/搜索.png" alt="" width=38px>
+        </button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;" @click="changecity('北京')">北京</a>
+        <a href="javascript:;" @click="changecity('上海')">上海</a>
+        <a href="javascript:;"@click="changecity('广州')">广州</a>
+        <a href="javascript:;"@click="changecity('深圳')">深圳</a>
+      </div>
+    </div>
+    <ul class="weather_list">
+      <li v-for="item in weatherList">
+        <div class="info_type"><span class="iconfont">{{ item.type }}</span></div>
+        <div class="info_temp">
+          <b>{{ item.low }}</b>
+          ~
+          <b>{{ item.high }}</b>
+        </div>
+        <div class="info_date"><span>{{ item.date }}</span></div>
+      </li>
+    </ul>
+    <!-- <footer>
+      <div class="logo"><img src="./img/footer天气.png" alt="logo" /></div>
+    </footer> -->
+  </div>
+
+  
   <!-- 开发环境版本，包含了有帮助的命令行警告 -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-    var app = new Vue({
-      el: "#todoapp",
-      data: {
-        list: ["写代码", "吃饭饭", "睡觉觉"],
-        inputValue: ""
-      },
-      methods: {
-        add: function () {
-          this.list.push(this.inputValue);
-        },
-        remove: function (index) {
-          console.log("删除");
-          console.log(index);
-          this.list.splice(index, 1);
-        },
-        clear: function () {
-          this.list = [];
-        }
-      },
-    })
-  </script>
+  <!-- 官网提供的 axios 在线地址 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- 自己的js -->
+  <script src="./js/main.js"></script>
 </body>
 
 </html>
