@@ -65,7 +65,7 @@ body{
 }
 
 .hotkey{
-    margin:3px 0 0 10px;
+    margin:3px 0 0 20px;
 }
 
 .hotkey a{
@@ -76,7 +76,7 @@ body{
 .weather_list{
     height:200px;
     text-align:center;
-    margin-top:50px;
+    margin-top:-19px;
     font-size:0px;
 }
 .weather_list li{
